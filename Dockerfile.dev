@@ -1,6 +1,12 @@
 # Base image
 FROM node:18
 
+# Creamos reverse proxy con nginx
+RUN apt-get install -y nginx
+RUN rm /etc/nginx/nginx.conf
+COPY ./nginx.conf.local /etc/nginx/nginx.conf
+RUN service nginx restart
+
 # Create app directory
 WORKDIR /usr/src/app
 
