@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  zion-backend:
+    container_name: chat-service
+    platform: linux/x86_64
+    init: true
+    image: chat-app-backend
+    build:
+      context: .
+      dockerfile: ./Dockerfile.local
+    ports:
+      - "4000:4000"
+    volumes:
+      - /usr/src/app/node_modules
